@@ -40,9 +40,7 @@ namespace KeycloakIdentityModel
             ValidateParameters(parameters);
             _parameters = parameters;
         }
-
-        #region Public Methods
-
+		
         /// <summary>
         ///     Gets the authentication type
         /// </summary>
@@ -153,11 +151,7 @@ namespace KeycloakIdentityModel
         {
             return new ClaimsIdentity(await GetClaimsAsync(), AuthenticationType);
         }
-
-        #endregion
-
-        #region Public Static Methods
-
+		
         /// <summary>
         ///     Converts a keycloak-generated claims identity into a Keycloak identity
         /// </summary>
@@ -374,11 +368,7 @@ namespace KeycloakIdentityModel
                     exception);
             }
         }
-
-        #endregion
-
-        #region Claim Generation Methods
-
+		
         protected IEnumerable<Claim> GenerateJwtClaims(JwtSecurityToken accessToken, JwtSecurityToken idToken,
             JwtSecurityToken refreshToken)
         {
@@ -420,41 +410,38 @@ namespace KeycloakIdentityModel
             // Process claim mappings
             return claimMappings.SelectMany(lookupClaim => lookupClaim.ProcessClaimLookup(webToken, jsonId));
         }
-
-        #endregion
-
-        #region Private Methods
-
+		
         private IEnumerable<Claim> GetCurrentClaims()
         {
             return _kcClaims.Concat(_userClaims);
         }
 
-        private async Task<IEnumerable<Claim>> GetClaimsAsync()
-        {
-            await _refreshLock.WaitAsync();
-            try
-            {
-                // Check to update cached claims, but not if refresh token is missing (as in bearer mode)
-                if ((_kcClaims == null || _accessToken.ValidTo <= DateTime.Now) && _refreshToken != null)
-                {
-                    // Validate refresh token expiration
-                    if (_refreshToken.ValidTo <= DateTime.Now)
-                        throw new Exception("Both the access token and the refresh token have expired");
+				private async Task<IEnumerable<Claim>> GetClaimsAsync()
+				{
+					await _refreshLock.WaitAsync();
+					try
+					{
+						// Check to update cached claims, but not if refresh token is missing (as in bearer mode)
+						if ((_kcClaims == null || _accessToken.ValidTo <= DateTime.Now) && _refreshToken != null)
+						{
+							var info = TimeZoneInfo.FindSystemTimeZoneById("Tokyo Standard Time");
+							DateTimeOffset localServerTime = DateTimeOffset.Now;
+							DateTimeOffset utc = localServerTime.ToUniversalTime();
+							// Validate refresh token expiration
+							if (_refreshToken.ValidTo <= utc.AddHours(-1))
+								throw new Exception("Both the access token and the refresh token have expired");
+							// Load new identity from token endpoint via refresh token
+							await RefreshIdentity(_refreshToken.RawData);
+						}
+						return GetCurrentClaims();
+					}
+					finally
+					{
+						_refreshLock.Release();
+					}
+				}
 
-                    // Load new identity from token endpoint via refresh token
-                    await RefreshIdentity(_refreshToken.RawData);
-                }
-
-                return GetCurrentClaims();
-            }
-            finally
-            {
-                _refreshLock.Release();
-            }
-        }
-
-        protected async Task CopyFromJwt(string accessToken, string refreshToken = null, string idToken = null)
+				protected async Task CopyFromJwt(string accessToken, string refreshToken = null, string idToken = null)
         {
             if (accessToken == null) throw new ArgumentException(nameof(accessToken));
 
@@ -498,7 +485,5 @@ namespace KeycloakIdentityModel
             await CopyFromJwt(respMessage.AccessToken, respMessage.RefreshToken, respMessage.IdToken);
             IsTouched = true;
         }
-
-        #endregion
     }
 }
