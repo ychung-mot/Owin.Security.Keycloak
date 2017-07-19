@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IdentityModel.Tokens;
+using Microsoft.IdentityModel.Tokens;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Security;
@@ -15,6 +15,7 @@ using KeycloakIdentityModel.Models.Responses;
 using KeycloakIdentityModel.Utilities;
 using KeycloakIdentityModel.Utilities.ClaimMapping;
 using Newtonsoft.Json.Linq;
+using System.IdentityModel.Tokens.Jwt;
 
 namespace KeycloakIdentityModel
 {
