@@ -62,7 +62,7 @@ namespace KeycloakIdentityModel.Utilities
                 RequireExpirationTime = true,
                 ValidateIssuer = !options.DisableIssuerValidation,
                 ValidateAudience = !options.DisableAudienceValidation,
-                ValidateIssuerSigningKey = !options.DisableTokenSignatureValidation,
+                ValidateIssuerSigningKey = !options.DisableIssuerSigningKeyValidation,
                 RequireSignedTokens = !options.AllowUnsignedTokens,
                 ValidIssuer = uriManager.GetIssuer(),
                 ClockSkew = options.TokenClockSkew,

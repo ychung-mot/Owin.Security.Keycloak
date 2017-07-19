@@ -12,7 +12,7 @@ namespace KeycloakIdentityModel.Models.Configuration
         string Scope { get; }
         string IdentityProvider { get; }
         string PostLogoutRedirectUrl { get; }
-        bool DisableTokenSignatureValidation { get; }
+        bool DisableIssuerSigningKeyValidation { get; }
         bool AllowUnsignedTokens { get; }
         bool DisableIssuerValidation { get; }
         bool DisableAudienceValidation { get; }
