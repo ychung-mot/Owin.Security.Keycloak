@@ -33,12 +33,10 @@ namespace KeycloakIdentityModel.Utilities
 
             Authority = _options.KeycloakUrl + "/realms/" + _options.Realm;
             MetadataEndpoint = new Uri(Authority + "/" + Protocols.OpenIdProviderMetadataNames.Discovery);
-            TokenValidationEndpoint = new Uri(Authority + "/tokens/validate");
         }
 
         public string Authority { get; }
         public Uri MetadataEndpoint { get; }
-        public Uri TokenValidationEndpoint { get; }
 
         private class Metadata
         {
