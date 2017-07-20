@@ -61,6 +61,7 @@
   </PropertyGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Owin.Security.Keycloak.nuspec" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -101,6 +102,9 @@
     <Compile Include="Global.cs" />
     <Compile Include="Middleware\KeycloakAuthenticationHandler.cs" />
     <Compile Include="Middleware\KeycloakAuthenticationMiddleware.cs" />
+    <Compile Include="..\Build\CommonAssemblyInfo.cs">
+      <Link>Properties\CommonAssemblyInfo.cs</Link>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

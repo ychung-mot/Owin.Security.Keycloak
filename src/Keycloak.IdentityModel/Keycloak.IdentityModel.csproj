@@ -85,6 +85,9 @@
     <Compile Include="Models\Responses\AuthorizationResponse.cs" />
     <Compile Include="Models\Responses\OidcResponse.cs" />
     <Compile Include="Models\Responses\TokenResponse.cs" />
+    <Compile Include="..\Build\CommonAssemblyInfo.cs">
+      <Link>Properties\CommonAssemblyInfo.cs</Link>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilities\Caching\Cache.cs" />
     <Compile Include="Utilities\Synchronization\ReaderGuard.cs" />
