@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <package >
   <metadata>
-    <id>Owin.Security.Keycloak.3</id>
+    <id>Owin.Security.Keycloak-3</id>
     <version>$FileVersion$</version>
-    <title>Owin.Security.Keycloak.3</title>
+    <title>Owin.Security.Keycloak-3</title>
     <authors>Matt Morgan</authors>
     <owners>Matt Morgan</owners>
     <licenseUrl>https://github.com/mattmorg55/Owin.Security.Keycloak/blob/master/LICENSE.md</licenseUrl>
