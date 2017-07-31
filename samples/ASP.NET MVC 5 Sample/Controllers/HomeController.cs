@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Web;
 using System.Web.Mvc;
 
-namespace ASP.NET_MVC_5_Sample.Controllers
+namespace StandardFlow.Controllers
 {
 	public class HomeController : Controller
 	{
@@ -17,8 +18,8 @@ namespace ASP.NET_MVC_5_Sample.Controllers
 		public ActionResult About()
 		{
 			ViewBag.Message = "Your application description page.";
-
-			return View();
+			var userPrinciple = User as ClaimsPrincipal;
+			return View(userPrinciple);
 		}
 
 		public ActionResult Contact()

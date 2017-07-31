@@ -6,7 +6,7 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 
-namespace ASP.NET_MVC_5_Sample
+namespace StandardFlow
 {
 	public class MvcApplication : System.Web.HttpApplication
 	{

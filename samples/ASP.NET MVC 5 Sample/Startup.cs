@@ -5,8 +5,8 @@ using Owin;
 using Owin.Security.Keycloak;
 using System;
 
-[assembly: OwinStartup(typeof(ASP.NET_MVC_5_Sample.Startup))]
-namespace ASP.NET_MVC_5_Sample
+[assembly: OwinStartup(typeof(StandardFlow.Startup))]
+namespace StandardFlow
 {
 	public class Startup
 	{
@@ -28,10 +28,8 @@ namespace ASP.NET_MVC_5_Sample
 				ClientId = "sample-web-app",
 				ClientSecret = "8eb92690-8c0c-42ba-b1ac-106dd2d06a22",
 				KeycloakUrl = "https://titanoboa.ajboggs.com/auth",
-				//ResponseType = "id_token token",
 				AuthenticationType = persistentAuthType,
-				//AuthenticationMode = AuthenticationMode.Active,
-				SignInAsAuthenticationType = persistentAuthType, // Not required with SetDefaultSignInAsAuthenticationType
+				SignInAsAuthenticationType = persistentAuthType,
 				//Token validation options - these are all set to defaults
 				AllowUnsignedTokens = false,
 				DisableIssuerSigningKeyValidation = false,

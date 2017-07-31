@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Optimization;
 
-namespace ASP.NET_MVC_5_Sample
+namespace StandardFlow
 {
 	public class BundleConfig
 	{
