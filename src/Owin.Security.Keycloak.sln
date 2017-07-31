@@ -13,6 +13,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{EC3D07A6
 		Build\NUGET.txt = Build\NUGET.txt
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleWebApp", "SampleWebApp\SampleWebApp.csproj", "{23D362B1-0872-4F8A-B755-36E7CD824A10}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,6 +34,12 @@ Global
 		{FA6DDDD7-366A-4012-ACF2-252C599F80C0}.Final|Any CPU.Build.0 = Final|Any CPU
 		{FA6DDDD7-366A-4012-ACF2-252C599F80C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FA6DDDD7-366A-4012-ACF2-252C599F80C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{23D362B1-0872-4F8A-B755-36E7CD824A10}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23D362B1-0872-4F8A-B755-36E7CD824A10}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23D362B1-0872-4F8A-B755-36E7CD824A10}.Final|Any CPU.ActiveCfg = Release|Any CPU
+		{23D362B1-0872-4F8A-B755-36E7CD824A10}.Final|Any CPU.Build.0 = Release|Any CPU
+		{23D362B1-0872-4F8A-B755-36E7CD824A10}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23D362B1-0872-4F8A-B755-36E7CD824A10}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
