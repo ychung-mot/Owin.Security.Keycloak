@@ -50,7 +50,7 @@ namespace Keycloak.IdentityModel
 		/// <summary>
 		///     Gets a value that indicates whether the identity has been authenticated
 		/// </summary>
-		public override bool IsAuthenticated => _kcClaims != null && _accessToken.ValidTo > DateTime.Now;
+		public override bool IsAuthenticated => _kcClaims != null && _accessToken.ValidTo > DateTime.UtcNow;
 
 		/// <summary>
 		///     Gets a value that indicates whether the identity has been updated since its instantiation
@@ -421,14 +421,12 @@ namespace Keycloak.IdentityModel
 			try
 			{
 				// Check to update cached claims, but not if refresh token is missing (as in bearer mode)
-				if ((_kcClaims == null || _accessToken.ValidTo <= DateTime.Now) && _refreshToken != null)
+				if ((_kcClaims == null || _accessToken.ValidTo <= DateTime.UtcNow) && _refreshToken != null)
 				{
-					var info = TimeZoneInfo.FindSystemTimeZoneById("Tokyo Standard Time");
-					DateTimeOffset localServerTime = DateTimeOffset.Now;
-					DateTimeOffset utc = localServerTime.ToUniversalTime();
 					// Validate refresh token expiration
-					if (_refreshToken.ValidTo <= utc.AddHours(-1))
+					if (_refreshToken.ValidTo <= DateTime.UtcNow)
 						throw new Exception("Both the access token and the refresh token have expired");
+
 					// Load new identity from token endpoint via refresh token
 					await RefreshIdentity(_refreshToken.RawData);
 				}
