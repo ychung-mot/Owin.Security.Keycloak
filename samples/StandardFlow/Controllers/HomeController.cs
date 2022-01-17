@@ -7,6 +7,7 @@ using System.Web.Mvc;
 
 namespace StandardFlow.Controllers
 {
+	[Authorize]
 	public class HomeController : Controller
 	{
 		public ActionResult Index()
@@ -14,7 +15,6 @@ namespace StandardFlow.Controllers
 			return View();
 		}
 
-		[Authorize]
 		public ActionResult About()
 		{
 			ViewBag.Message = "Your application description page.";

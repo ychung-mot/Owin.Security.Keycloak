@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace SampleWebApp.Controllers
 {
+	[Authorize]
 	public class HomeController : Controller
 	{
 		public ActionResult Index()
@@ -13,7 +14,6 @@ namespace SampleWebApp.Controllers
 			return View();
 		}
 
-		[Authorize]
 		public ActionResult About()
 		{
 			ViewBag.Message = "Your application description page.";

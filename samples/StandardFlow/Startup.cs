@@ -22,20 +22,22 @@ namespace StandardFlow
 			// or if you just like it better:
 			app.SetDefaultSignInAsAuthenticationType(persistentAuthType);
 
+			app.UseJwtBearerAuthentication
+
 			app.UseKeycloakAuthentication(new KeycloakAuthenticationOptions
 			{
-				Realm = "ajboggs",
-				ClientId = "sample-web-app",
-				ClientSecret = "8eb92690-8c0c-42ba-b1ac-106dd2d06a22",
-				KeycloakUrl = "https://titanoboa.ajboggs.com/auth",
+				Realm = "onestopauth-business",
+				ClientId = "hets",
+				//ClientSecret = "8eb92690-8c0c-42ba-b1ac-106dd2d06a22",
+				KeycloakUrl = "http://localhost:9030/auth",
 				AuthenticationType = persistentAuthType,
 				SignInAsAuthenticationType = persistentAuthType,
 				//Token validation options - these are all set to defaults
 				AllowUnsignedTokens = false,
 				DisableIssuerSigningKeyValidation = false,
 				DisableIssuerValidation = false,
-				DisableAudienceValidation = false,
-				TokenClockSkew = TimeSpan.FromSeconds(2)
+				DisableAudienceValidation = true,
+				TokenClockSkew = TimeSpan.FromSeconds(2),				
 			});
 		}
 	}
